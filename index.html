@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>给李奥曼的小惊喜 💖</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ffd6e0, #fff0f5, #ffe4e1);
+      font-family: "Comic Sans MS", "Microsoft YaHei", sans-serif;
+    }
+
+    .title {
+      position: fixed;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 28px;
+      color: #ff4f81;
+      text-align: center;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+      to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+
+    .popup {
+      position: absolute;
+      padding: 12px 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      color: white;
+      font-size: 16px;
+      opacity: 0;
+      animation: floatUp 4s ease-in-out forwards;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(50px); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(-200px); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="title">✨ 这是为 <b>李奥曼</b> 专门定制的小程序 ✨<br>请点击屏幕看看吧 💞</div>
+
+  <script>
+    const messages = [
+      "你笑起来真好看 💕",
+      "遇见你是我最甜的意外 🍬",
+      "愿你被世界温柔以待 🌷",
+      "你是我心中的小太阳 ☀️",
+      "爱你，是我写过最浪漫的代码 💻❤️",
+      "想把所有温柔都送给你 💌",
+      "你比星星更闪亮 ✨",
+      "全世界都没你可爱 🐰",
+      "喜欢你，每天都更新不完 🌸",
+      "此生有你，足够浪漫 💞"
+    ];
+
+    const colors = [
+      "#ff9aa2", "#ffb7b2", "#ffdac1", "#e2f0cb",
+      "#b5ead7", "#c7ceea", "#fbcffb", "#ffd6e0", "#fff5ba"
+    ];
+
+    document.body.addEventListener("click", () => {
+      document.querySelector(".title").style.display = "none";
+      setInterval(() => {
+        createPopup();
+      }, 800);
+    });
+
+    function createPopup() {
+      const div = document.createElement("div");
+      div.className = "popup";
+      div.innerText = messages[Math.floor(Math.random() * messages.length)];
+      div.style.background = colors[Math.floor(Math.random() * colors.length)];
+      div.style.left = Math.random() * (window.innerWidth - 150) + "px";
+      div.style.top = Math.random() * (window.innerHeight - 100) + "px";
+      document.body.appendChild(div);
+      setTimeout(() => div.remove(), 4000);
+    }
+  </script>
+</body>
+</html>
